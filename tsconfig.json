@@ -12,7 +12,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "baseUrl": ".",
-    "noImplicitAny": true,
     "removeComments": true,
     "noEmit": true,
   },
