@@ -1,9 +1,12 @@
-import { Configuration } from 'webpack';
+import { Configuration as WebpackConfiguration } from 'webpack';
+import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import path from 'path';
+
+interface Configuration extends WebpackConfiguration {
+  devServer?: WebpackDevServerConfiguration;
+}
 
 const config: Configuration = {
-  mode: 'development',
   entry: './src/index.tsx',
   module: {
     rules: [
@@ -11,14 +14,7 @@ const config: Configuration = {
         test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              '@babel/preset-env',
-              '@babel/preset-react',
-              '@babel/preset-typescript',
-            ],
-          },
+          loader: 'esbuild-loader'
         },
       },
     ],
